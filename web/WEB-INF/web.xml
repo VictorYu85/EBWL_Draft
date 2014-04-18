@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <filter>
+        <filter-name>SaveOptions</filter-name>
+        <filter-class>filters.SaveOptions</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SaveOptions</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>ClearTeams</servlet-name>
+        <servlet-class>AdminTools.ClearTeamNames</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetUser</servlet-name>
+        <servlet-class>business.SetUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RefreshTable</servlet-name>
+        <servlet-class>business.RefreshTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClearTeams</servlet-name>
+        <url-pattern>/ClearTeams</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ImportData</servlet-name>
+        <servlet-class>AdminTools.ImportCSVData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImportData</servlet-name>
+        <url-pattern>/ImportData</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdatePlayerTeam</servlet-name>
+        <servlet-class>AdminTools.UpdatePlayerTeam</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePlayerTeam</servlet-name>
+        <url-pattern>/UpdatePlayerTeam</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CustomRank</servlet-name>
+        <servlet-class>UserTools.CustomRank_Tool</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomRank</servlet-name>
+        <url-pattern>/CustomRank</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetPlayerData</servlet-name>
+        <servlet-class>UserTools.GetPlayerData_Tool</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPlayerData</servlet-name>
+        <url-pattern>/GetPlayerData</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SortPlayers</servlet-name>
+        <servlet-class>UserTools.SortPlayers_Tool</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SortPlayers</servlet-name>
+        <url-pattern>/SortPlayers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetUser</servlet-name>
+        <url-pattern>/SetUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RefreshTable</servlet-name>
+        <url-pattern>/RefreshTable</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

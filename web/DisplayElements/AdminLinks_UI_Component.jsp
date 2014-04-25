@@ -7,8 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>    
-        <a href="index.jsp">Back to Index</a>
-        <a href="GetPlayerData?user=admin">Refresh</a>
-        <a href="ClearTeams">Clear Teams</a>
-        <a href="ImportData">Import Data</a>
+    <div id="nav">
+        <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
+        <a href="GetPlayerData?user=admin">&nbsp;Refresh </a> &nbsp;
+        <a href="ClearTeams">&nbsp;Clear Teams </a> &nbsp;
+        <a href="ImportData">&nbsp;Import Data </a> &nbsp;
+    </div>
 </html>

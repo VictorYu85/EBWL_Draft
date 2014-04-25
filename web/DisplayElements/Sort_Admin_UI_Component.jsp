@@ -7,15 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <table border="1" cellpadding="5">            
+    <table id="sort" cellpadding="1">            
         <tr>
             <form name="selectionBar" action="SortPlayers" method="post">
-                <td>Sort Order</td>                                                                    
                 <td>                        
-                    <input type="checkbox" name="cat6" ${(track6 == "on") ? "checked": ""}>Hide Drafted Players
+                    <input type ="checkbox" name="cat6" ${(track6 == "on") ? "checked": ""}>Hide Drafted Players
                 </td>
                 <td>
-                    <input type="submit" name="Submit Sort" value="Sort">                   
+                    <input type="submit" name="Submit Sort" value="Go">                   
                 </td> 
             </form>            
         </tr>

@@ -43,31 +43,18 @@ public class CustomRank_Tool extends HttpServlet {
         
         /*************************************************************/
         String customExp = (String)request.getParameter("Experience");
-        String customDSk = (String)request.getParameter("Disc Skills");
+        String customDSk = (String)request.getParameter("DiscSkills");
         String customDef = (String)request.getParameter("Defense");
         String customAth = (String)request.getParameter("Athleticism");
         String customHt = (String)request.getParameter("Height");
         
-        Double weightExperience = Double.parseDouble(customExp);
-        Double weightDiscSkills = Double.parseDouble(customDSk);
-        Double weightDefense = Double.parseDouble(customDef);
-        Double weightAthleticism = Double.parseDouble(customAth);
-        Double weightHeight = Double.parseDouble(customHt);
+        Double wE = Double.parseDouble(customExp);
+        Double wDS = Double.parseDouble(customDSk);
+        Double wD = Double.parseDouble(customDef);
+        Double wA = Double.parseDouble(customAth);
+        Double wH = Double.parseDouble(customHt);
         
-        Double weightTotal = weightExperience + weightDiscSkills + weightDefense + weightAthleticism + weightHeight;
-        
-        //flat weighting
-        Double wE = weightExperience;
-        Double wDS = weightDiscSkills;
-        Double wD = weightDefense;
-        Double wA = weightAthleticism;
-        Double wH = weightHeight;
-        
-        //percentage weighting
-//        Double wE = weightExperience /weightTotal;
-//        Double wDS = weightDiscSkills/weightTotal;
-//        Double wD = weightDefense/weightTotal;
-//        Double wA = weightAthleticism/weightTotal;
+        Double weightTotal = wE + wDS + wD + wA + wH;          
         
         for (Player p : playerList) {
             Double customScore = (wE*p.getStatExperience() + wDS*p.getStatDiscSkills() +
@@ -79,12 +66,23 @@ public class CustomRank_Tool extends HttpServlet {
         
         /***********************************************/
         //Saves Sort Settings
-        String cat1 = (String)request.getParameter("cat1");
-        String cat2 = (String)request.getParameter("cat2");
-        String cat3 = (String)request.getParameter("cat3");
-        String cat4 = (String)request.getParameter("cat4");
-        String cat5 = (String)request.getParameter("cat5");
-        String cat6 = (String)request.getParameter("cat6");
+       
+        String cat1 = (String)session.getAttribute("track1");
+        String cat2 = (String)session.getAttribute("track2");
+        String cat3 = (String)session.getAttribute("track3");
+        String cat4 = (String)session.getAttribute("track4");
+        String cat5 = (String)session.getAttribute("track5");
+        String cat6 = (String)session.getAttribute("track6");
+       
+        String option = "yes";
+        //tracks sorts Settings
+        request.setAttribute("passedCustom", option);
+        request.setAttribute("cat1", cat1);
+        request.setAttribute("cat2", cat2);
+        request.setAttribute("cat3", cat3);
+        request.setAttribute("cat4", cat4);
+        request.setAttribute("cat5", cat5);
+        request.setAttribute("cat6", cat6);
         
         //tracks custom Rank Settings
         session.setAttribute("customRank1", customExp);
@@ -92,13 +90,8 @@ public class CustomRank_Tool extends HttpServlet {
         session.setAttribute("customRank3", customDef);
         session.setAttribute("customRank4", customAth);
         session.setAttribute("customRank5", customHt);
-        //tracks sorts Settings
-        request.setAttribute("track1", cat1);
-        request.setAttribute("track2", cat2);
-        request.setAttribute("track3", cat3);
-        request.setAttribute("track4", cat4);
-        request.setAttribute("track5", cat5);
-        request.setAttribute("track6", cat6);
+        
+
         
         session.setAttribute("playerSet", playerList);
         

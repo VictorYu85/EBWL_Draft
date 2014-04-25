@@ -38,6 +38,21 @@ public class SetUser extends HttpServlet {
             session.setAttribute("selectCat", SelectionLists.categoriesList);
             session.setAttribute("teamList", SelectionLists.teamList);
             
+            
+            
+                session.setAttribute("track1", "None");
+                session.setAttribute("track2", "None");
+                session.setAttribute("track3", "None");
+                session.setAttribute("track4", "None");
+                session.setAttribute("track5", "None");
+                session.setAttribute("track6", "off");
+                
+                session.setAttribute("customRank1", "1");
+                session.setAttribute("customRank2", "1");
+                session.setAttribute("customRank3", "1");
+                session.setAttribute("customRank4", "1");
+                session.setAttribute("customRank5", "0");
+                
             String targetURL = "/GetPlayerData";            
         
             RequestDispatcher dispatcher =

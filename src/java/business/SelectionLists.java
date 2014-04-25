@@ -13,8 +13,11 @@ package business;
 public class SelectionLists {
 
     //Create the Selection Categories (Maybe move to its own servlet later?
-    public static String[] categoriesList = {"None", "Experience", "Disc Skills", "Defense",
-        "Athleticism", "Total", "Height", "Custom Weighting", "Player ID"};
+//    public static String[] categoriesList = {"None", "Experience", "Disc Skills", "Defense",
+//        "Athleticism", "Total", "Height", "Custom Weighting", "Player ID"};
+
+     public static String[] categoriesList = {"None", "Exp", "Disc", "Def",
+        "Ath", "Total", "Height", "Custom", "ID"};
 
     //Create Team List
     public static String[] teamList = {"Frantic Frisbees", "Disco Stus", 
@@ -29,12 +32,12 @@ public class SelectionLists {
     public static String HomePassword = "sesame";
     public static String LivePassword = "sesame123";
     
-//    public static String databaseURL = DailyRazorURL;
-//    public static String user = LiveUser;
-//    public static String password = LivePassword;
+    public static String databaseURL = DailyRazorURL;
+    public static String user = LiveUser;
+    public static String password = LivePassword;
     
-    public static String databaseURL = HomeDatabaseURL;
-    public static String user = HomeUser;
-    public static String password = HomePassword;
+//    public static String databaseURL = HomeDatabaseURL;
+//    public static String user = HomeUser;
+//    public static String password = HomePassword;
     
 }

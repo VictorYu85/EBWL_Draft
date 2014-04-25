@@ -7,26 +7,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%
-        
-    
-    %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>EBWL 2014-2015 Draft Portal</title>
+	<link rel="stylesheet" type="text/css" href="ebwl.css">
     </head>
     <body>
-        <h1>Hello, Welcome to the EBWL draft!</h1>
-        <table width="400">
+        <table align=center width=620>
+	    <tr align=center>
+		<td colspan=2><h1 align=center>EBWL 2014-2015 Draft Portal</h1></td>
+	    </tr>
             <tr>
-                <td><img src="images/Justin_Frisbee3.jpg" width="200" height="250"></td>
-                <td><img src="images/Justin_Frisbee2.jpg" width="200" height="250"></td>
+                <td><a href="SetUser?user=admin"><img src="images/manager.jpg" width="300" height="200"></a></td>
+                <td><a href="SetUser?user=drafter"><img src="images/captain.jpg" width="300" height="200"></a></td>
             </tr>
-            <tr>
-                <td><a href="SetUser?user=drafter">Run Query</td>
-                <td><a href="SetUser?user=admin">Master Drafter</td>
-            </tr>
-        </table>
-        
+        </table>      
     </body>
 </html>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : AdminPage
     Created on : Apr 4, 2014, 12:30:57 AM
-    Author     : Vyu
+    Author     : Vyu, jhsia
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,13 +18,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>League Manager Page</title>
+	<link rel="stylesheet" type="text/css" href="ebwl.css">
     </head>
     <body>
-        <h1>Admin Draft Page</h1>
+        <div id="title"><h1>EBWL 2014-2015 League Manager</h1></div>
+    
+        <%@ include file="/DisplayElements/DraftPlayer_UI_Component.jsp" %>
+        <%@ include file="/DisplayElements/AdminLinks_UI_Component.jsp" %>
+        <%@ include file="/DisplayElements/Sort_Admin_UI_Component.jsp" %>
+        <%@ include file="/DisplayElements/PlayerTable_UI_Component.jsp" %>
     </body>
-    <%@ include file="/DisplayElements/DraftPlayer_UI_Component.jsp" %>
-    <%@ include file="/DisplayElements/AdminLinks_UI_Component.jsp" %>
-    <%@ include file="/DisplayElements/Sort_Admin_UI_Component.jsp" %>
-    <%@ include file="/DisplayElements/PlayerTable_UI_Component.jsp" %>
 </html>

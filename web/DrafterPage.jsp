@@ -1,7 +1,7 @@
 <%-- 
     Document   : DrafterPage
     Created on : Apr 4, 2014, 12:44:15 AM
-    Author     : Vyu
+    Author     : Vyu, jhsia
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,12 +15,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Drafter Page</title>
+        <title>EBWL 2014-2015 Player Draft</title>
+	<link rel="stylesheet" type="text/css" href="ebwl.css">
     </head>
     <body>
-        <h1>Welcome to the draft!</h1>
-        <a href="GetPlayerData?user=user&cat6=${cat6}">Refresh</a>
-        <a href="index.jsp">Back to Index</a>
+        <div id="title"><h1>EBWL 2014-2015 Player Draft</h1></div>
+        <div id="nav">
+	    <a href="GetPlayerData?user=user&cat6=${cat6}">&nbsp;Refresh </a> &nbsp;
+            <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
+	</div>
         <%@ include file="/DisplayElements/CustomRank_UI_Component.jsp" %>
         <%@ include file="/DisplayElements/Sort_UI_Component.jsp" %>
         <%@ include file="/DisplayElements/PlayerTable_UI_Component.jsp" %>

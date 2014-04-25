@@ -147,19 +147,34 @@ public class SortPlayers_Tool extends HttpServlet {
         nElems = PlayerList.length;
         String user = (String)session.getAttribute("user");
         
-        //admin page does not have options for cat1-5
-        if (user.equals("admin")) {
-            cat1 = cat2 = cat3 = cat4 = cat5 = "None";
-        } 
-        else {
-            cat1 = (String)request.getParameter("cat1");
-            cat2 = (String)request.getParameter("cat2");
-            cat3 = (String)request.getParameter("cat3");
-            cat4 = (String)request.getParameter("cat4");
-            cat5 = (String)request.getParameter("cat5");            
-        }
-        //tracks whether hide team has been selected
-        cat6 = (String)request.getParameter("cat6");
+
+            String test = (String)request.getAttribute("passedCustom");
+            if (test == null) {
+                test = "no";
+            }
+            if (test.equals("yes")) {
+                cat1 = (String)session.getAttribute("track1");
+                cat2 = (String)session.getAttribute("track2");
+                cat3 = (String)session.getAttribute("track3");
+                cat4 = (String)session.getAttribute("track4");
+                cat5 = (String)session.getAttribute("track5");
+                cat6 = (String)session.getAttribute("track6");
+            }
+            else {
+                
+                if (!user.equals("admin")) {
+                    cat1 = (String)request.getParameter("cat1");
+                    cat2 = (String)request.getParameter("cat2");
+                    cat3 = (String)request.getParameter("cat3");
+                    cat4 = (String)request.getParameter("cat4");
+                    cat5 = (String)request.getParameter("cat5");
+                }
+                else {
+                cat1 = cat2 = cat3 = cat4 = cat5 =  "None";
+                }
+                cat6 = (String)request.getParameter("cat6");
+            }
+
         
         //reset Sort values to 0
         for (int i = 0; i < nElems; i++) {
@@ -184,12 +199,12 @@ public class SortPlayers_Tool extends HttpServlet {
         //Sort
         quickSort();
         
-        request.setAttribute("track1", cat1);
-        request.setAttribute("track2", cat2);
-        request.setAttribute("track3", cat3);
-        request.setAttribute("track4", cat4);
-        request.setAttribute("track5", cat5);
-        request.setAttribute("track6", cat6);
+        session.setAttribute("track1", cat1);
+        session.setAttribute("track2", cat2);
+        session.setAttribute("track3", cat3);
+        session.setAttribute("track4", cat4);
+        session.setAttribute("track5", cat5);
+        session.setAttribute("track6", cat6);
         
         session.setAttribute("playerSet", PlayerList);
         

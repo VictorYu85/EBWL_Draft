@@ -38,28 +38,23 @@ public class TeamColor extends TagSupport {
             JspWriter out = pageContext.getOut();
             
             if (teamName.equals("")) {
-                out.print("<td>" + teamName + "</td>");
+                out.print("<td width=99 align=\"center\">" + teamName + "</td>");
             }
             else if (teamName.equals("Frantic Frisbees")) {
-                out.print("<td bgcolor=\"#FFA07A\">" + teamName + "</td>");
+                out.print("<td width=99 align=\"center\" bgcolor=\"#FFA07A\">" + teamName + "</td>");
             }
             else if (teamName.equals("Disco Stus")) {
-                out.print("<td bgcolor=\"#AFEEEE\">" + teamName + "</td>");
+                out.print("<td width=99 align=\"center\" bgcolor=\"#AFEEEE\">" + teamName + "</td>");
             }
             else if (teamName.equals("Floppy Discs")) {
-                out.print("<td bgcolor=\"#FFEBCD\">" + teamName + "</td>");
+                out.print("<td width=99 align=\"center\" bgcolor=\"#FFEBCD\">" + teamName + "</td>");
             }
             else if (teamName.equals("Disc in a box")) {
-                out.print("<td bgcolor=\"C0C0C0\">" + teamName + "</td>");
+                out.print("<td width=99 align=\"center\" bgcolor=\"C0C0C0\">" + teamName + "</td>");
             }
             else {
-                out.print("<td bgcolor=\"C0C0C0\">" + teamName + "</td>");
-            }
-            
-            //</td>
-            
-            
-            
+                out.print("<td width=99 align=\"center\" bgcolor=\"C0C0C0\">" + teamName + "</td>");
+            }            
 
         } catch (Exception ioe) {
             ioe.printStackTrace();

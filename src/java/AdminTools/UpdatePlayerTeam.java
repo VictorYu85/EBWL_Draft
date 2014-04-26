@@ -112,21 +112,6 @@ public class UpdatePlayerTeam extends HttpServlet {
         playerList = updateTeam(dbURL, username, password, teamName, playerId, playerList);        
         
         /*****************************************************************/
-        //Saves Sort Settings
-        String cat1 = (String)request.getParameter("cat1");
-        String cat2 = (String)request.getParameter("cat2");
-        String cat3 = (String)request.getParameter("cat3");
-        String cat4 = (String)request.getParameter("cat4");
-        String cat5 = (String)request.getParameter("cat5");
-        String cat6 = (String)request.getParameter("cat6");
-        
-        //tracks sorts Settings
-        request.setAttribute("track1", cat1);
-        request.setAttribute("track2", cat2);
-        request.setAttribute("track3", cat3);
-        request.setAttribute("track4", cat4);
-        request.setAttribute("track5", cat5);
-        request.setAttribute("track6", cat6);
         
         session.setAttribute("playerSet", playerList);
         

@@ -32,8 +32,10 @@ public class RefreshTable extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
+        /********************************************************/
+            //NOT CURRENTLY IN USE
+        /********************************************************/
             HttpSession session = request.getSession();
-            String hideTeamsOption = (String)request.getParameter("cat6");
             
             String targetURL = "/GetPlayerData";            
         

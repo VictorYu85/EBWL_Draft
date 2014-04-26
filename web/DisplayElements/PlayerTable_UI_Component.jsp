@@ -11,7 +11,7 @@
 	<table class="players" cellpadding="1">
             <tr class="header">
                 <td width=24 title="Arbitrary ID for drafting">ID</td>
-                <td width=135>Name</td>
+                <td width=180>Name</td>
                 <td width=99>Team</td>
                 <td width=45>Height</td>
                 <td width=26 title="Experience">EXP</td>
@@ -33,7 +33,7 @@
                  <c:if test = "${(player.team == '') || (track6 != 'on')}">   
                     <tr valign ="top">
                         <td width=24 align="center">${player.playerId}</td>
-                        <td width=135><b>${player.firstName}&nbsp;${player.lastName}</b></td>
+                        <td width=180><b>${player.firstName}&nbsp;${player.lastName}</b></td>
                         <color:TeamColor teamName="${player.team}"/>
                         <td width=45 align="center">${player.statHeightFeet}"${player.statHeightInches}'</td>                     
                         <td width=26 align="center">${player.statExperience}</td>

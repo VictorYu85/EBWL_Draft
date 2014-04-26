@@ -101,19 +101,19 @@ public class SortPlayers_Tool extends HttpServlet {
         if (category.equals("None")) {
             //do nothing
         }
-        else if (category.equals("Experience")) {
+        else if (category.equals("Exp")) {
             temp = temp * 10;
             temp += PlayerList[itr].getStatExperience();
         }
-        else if (category.equals("Disc Skills")) {
+        else if (category.equals("Disc")) {
             temp = temp * 10;
             temp += PlayerList[itr].getStatDiscSkills();
         }
-        else if (category.equals("Defense")) {
+        else if (category.equals("Def")) {
             temp = temp * 10;
             temp += PlayerList[itr].getStatDefense();
         }
-        else if (category.equals("Athleticism")) {
+        else if (category.equals("Ath")) {
             temp = temp * 10;
             temp += PlayerList[itr].getStatAthleticism();
         }
@@ -127,11 +127,11 @@ public class SortPlayers_Tool extends HttpServlet {
             temp = temp * 100;
             temp += PlayerList[itr].getStatHeightInches();
         }
-        else if (category.equals("Custom Weighting")) {
+        else if (category.equals("Custom")) {
             temp = temp * 1000000;
             temp += PlayerList[itr].getStatCustom();
         }
-        else if (category.equals("Player ID")) {
+        else if (category.equals("ID")) {
             temp = temp * 1000;
             temp += (999-PlayerList[itr].getPlayerId());
         }
@@ -160,9 +160,8 @@ public class SortPlayers_Tool extends HttpServlet {
                 cat5 = (String)session.getAttribute("track5");
                 cat6 = (String)session.getAttribute("track6");
             }
-            else {
-                
-                if (!user.equals("admin")) {
+            else {                
+                if (user.equals("drafter")) {
                     cat1 = (String)request.getParameter("cat1");
                     cat2 = (String)request.getParameter("cat2");
                     cat3 = (String)request.getParameter("cat3");
@@ -170,7 +169,7 @@ public class SortPlayers_Tool extends HttpServlet {
                     cat5 = (String)request.getParameter("cat5");
                 }
                 else {
-                cat1 = cat2 = cat3 = cat4 = cat5 =  "None";
+                    cat1 = cat2 = cat3 = cat4 = cat5 =  "None";
                 }
                 cat6 = (String)request.getParameter("cat6");
             }

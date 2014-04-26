@@ -9,7 +9,7 @@
 <html>    
     <div id="nav">
         <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
-        <a href="GetPlayerData?user=admin">&nbsp;Refresh </a> &nbsp;
+        <a href="GetPlayerData">&nbsp;Refresh </a> &nbsp;
         <a href="ClearTeams">&nbsp;Clear Teams </a> &nbsp;
         <a href="ImportData">&nbsp;Import Data </a> &nbsp;
     </div>

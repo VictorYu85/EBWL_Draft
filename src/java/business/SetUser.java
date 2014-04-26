@@ -38,8 +38,6 @@ public class SetUser extends HttpServlet {
             session.setAttribute("selectCat", SelectionLists.categoriesList);
             session.setAttribute("teamList", SelectionLists.teamList);
             
-            
-            
                 session.setAttribute("track1", "None");
                 session.setAttribute("track2", "None");
                 session.setAttribute("track3", "None");

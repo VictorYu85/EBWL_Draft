@@ -21,7 +21,7 @@
     <body>
         <div id="title"><h1>EBWL 2014-2015 Player Draft</h1></div>
         <div id="nav">
-	    <a href="GetPlayerData?user=user&cat6=${cat6}">&nbsp;Refresh </a> &nbsp;
+	    <a href="GetPlayerData">&nbsp;Refresh </a> &nbsp;
             <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
 	</div>
         <%@ include file="/DisplayElements/CustomRank_UI_Component.jsp" %>

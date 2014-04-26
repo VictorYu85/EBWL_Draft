@@ -32,12 +32,12 @@ public class SelectionLists {
     public static String HomePassword = "sesame";
     public static String LivePassword = "sesame123";
     
-    public static String databaseURL = DailyRazorURL;
-    public static String user = LiveUser;
-    public static String password = LivePassword;
+//    public static String databaseURL = DailyRazorURL;
+//    public static String user = LiveUser;
+//    public static String password = LivePassword;
     
-//    public static String databaseURL = HomeDatabaseURL;
-//    public static String user = HomeUser;
-//    public static String password = HomePassword;
+    public static String databaseURL = HomeDatabaseURL;
+    public static String user = HomeUser;
+    public static String password = HomePassword;
     
 }

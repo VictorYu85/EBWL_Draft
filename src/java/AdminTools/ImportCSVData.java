@@ -50,6 +50,7 @@ public class ImportCSVData extends HttpServlet {
                     new FileReader(file));
             int Count = 0;
             String line = in.readLine();
+            line = in.readLine();
             while(line != null) {
                 line = line + "| ";
                 String[] t = line.split("\\|");                    
@@ -82,7 +83,11 @@ public class ImportCSVData extends HttpServlet {
                 p.setDescAddPlayerNotes(additionalPlayerNotes);
                 p.setDescPreviousTeams(previousTeams);
                 p.setInfoBaggage(baggage);
-
+                
+                //depends on the list being imported
+                //p.setGender("Male");
+                p.setGender("Female");
+                
                 players.add(p);
 
                 line = in.readLine();  
@@ -105,8 +110,9 @@ public class ImportCSVData extends HttpServlet {
                 query = "INSERT INTO player_details " +
                     "(First_Name, Last_Name, Team, Stat_Experience, Stat_Disc_Skills," +
                     " Stat_Defense, Stat_Athleticism, Desc_Previous_Teams," +
-                    " Desc_Add_Player_Notes, Info_Baggage, Stat_Height_Feet, Stat_Height_Inches)" +
-                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    " Desc_Add_Player_Notes, Info_Baggage, Stat_Height_Feet, Stat_Height_Inches," +
+                    " Gender) "+
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             /*
             query = "INSERT into player_details VALUES" + "{?,?,?,?,?,?,?,?,?,?,?,?}";
 
@@ -124,7 +130,8 @@ public class ImportCSVData extends HttpServlet {
             st.setString(10, p.getInfoBaggage());
             st.setDouble(11, p.getStatHeightFeet());
             st.setDouble(12, p.getStatHeightInches());
-
+            st.setString(13, p.getGender());
+            
             System.out.println(st.executeUpdate());
         }
 
@@ -145,7 +152,7 @@ public class ImportCSVData extends HttpServlet {
         try {
             Connection connection = DriverManager.getConnection(dbURL, username, password);
             ServletContext sc = this.getServletContext();
-            String path = sc.getRealPath("/WEB-INF/EBWL Draft Data(140)v2.csv");
+            String path = sc.getRealPath("/WEB-INF/EBWL Draft Data(Women)add.csv");
 
             ArrayList<Player> newPlayers = getPlayersFromCSV(path);
             for (Player p : newPlayers) {

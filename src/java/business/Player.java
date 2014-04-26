@@ -29,6 +29,8 @@ public class Player implements Serializable{
     private String descPreviousTeams;
     private String descAddPlayerNotes;
     private String infoBaggage;
+    private String gender;
+    private int baggageId;
     //maybe change to double later?
     private int statSortValue;
     
@@ -50,6 +52,7 @@ public class Player implements Serializable{
         descAddPlayerNotes = "";
         infoBaggage = "";
         statSortValue = 0;
+        gender = "";
     }
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
@@ -185,5 +188,21 @@ public class Player implements Serializable{
             
     public int getStatSortValue() {
         return statSortValue;
+    }
+    
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
+    public String getGender() {
+        return gender;
+    }
+    
+    public void setBaggageId(int baggageId) {
+        this.baggageId = baggageId;
+    }
+            
+    public int getBaggageId() {
+        return baggageId;
     }
 }

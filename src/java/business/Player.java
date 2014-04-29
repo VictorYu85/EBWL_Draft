@@ -53,6 +53,7 @@ public class Player implements Serializable{
         infoBaggage = "";
         statSortValue = 0;
         gender = "";
+        //initialize baggageId?
     }
     public void setPlayerId(int playerId) {
         this.playerId = playerId;

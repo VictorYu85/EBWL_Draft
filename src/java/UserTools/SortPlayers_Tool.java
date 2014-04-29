@@ -184,7 +184,7 @@ public class SortPlayers_Tool extends HttpServlet {
                 (cat4.equals("None")) && (cat5.equals("None")));
         
         if(noSortSelected) {
-            cat1 = "Player ID";
+            cat1 = "ID";
         }
                 
         //calculate Sort Number
@@ -206,6 +206,12 @@ public class SortPlayers_Tool extends HttpServlet {
         session.setAttribute("track6", cat6);
         
         session.setAttribute("playerSet", PlayerList);
+        
+        String gender = (String)request.getAttribute("gender");
+        if (gender == null) {
+            gender = (String)request.getParameter("gender");
+        }
+        request.setAttribute("gender", gender);
         
         String targetURL = "/DrafterPage.jsp";
         if (user.equals("admin")) {

@@ -91,6 +91,12 @@ public class CustomRank_Tool extends HttpServlet {
 
         session.setAttribute("playerSet", playerList);
         
+        String gender = (String)request.getAttribute("gender");
+        if (gender == null) {
+            gender = (String)request.getParameter("gender");
+        }
+        request.setAttribute("gender", gender);
+        
         String targetURL = "/SortPlayers";
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);

@@ -62,6 +62,12 @@ public class GetPlayerData_Tool extends HttpServlet {
             targetURL = "/AdminPage.jsp";
         }
         
+        String gender = (String)request.getAttribute("gender");
+        if (gender == null) {
+            gender = (String)request.getParameter("gender");
+        }
+        request.setAttribute("gender", gender);
+        
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);
             dispatcher.forward(request, response); 

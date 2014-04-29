@@ -59,6 +59,7 @@
                         value=${(customRank5 == null) ? "0" : customRank5}></td>
                     <td width=10></td>
                     <td><input type="button" value="Apply" onClick="validateWeighting(this.form)"></td>
+                    <input type="hidden" name="gender" value="${gender}">
                 </form>
             </tr>
         </table>

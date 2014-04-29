@@ -23,6 +23,7 @@
                 <td width=300>Previous Teams</td>
                 <td width=170>Additional Player Notes</td>
                 <td width=135>Baggage</td>
+                <td width=100>Gender</td>
             </tr>
 	</table>
     </div>
@@ -30,23 +31,26 @@
     <div id="scroll">
     	<table class="players" cellpadding="1">
             <c:forEach var="player" items="${playerSet}">
-                 <c:if test = "${(player.team == '') || (track6 != 'on')}">   
-                    <tr valign ="top">
-                        <td width=24 align="center">${player.playerId}</td>
-                        <td width=180><b>${player.firstName}&nbsp;${player.lastName}</b></td>
-                        <color:TeamColor teamName="${player.team}"/>
-                        <td width=45 align="center">${player.statHeightFeet}"${player.statHeightInches}'</td>                     
-                        <td width=26 align="center">${player.statExperience}</td>
-                        <td width=30 align="center">${player.statDiscSkills}</td>
-                        <td width=25 align="center">${player.statDefense}</td>
-                        <td width=27 align="center">${player.statAthleticism}</td>
-                        <td width=34 align="center">${player.statTotal}</td>
-                        <td width=51 align="center">${player.statCustom}</td>
-                        <td width=300>${player.descPreviousTeams}</td>
-                        <td width=170>${player.descAddPlayerNotes}</td>
-                        <td width=135>${player.infoBaggage}</td>
-                    </tr>
-                </c:if>                    
+                <c:if test = "${(gender == player.gender) || (gender == 'All') || (user == 'admin')}">
+                    <c:if test = "${(player.team == '') || (track6 != 'on')}">   
+                       <tr valign ="top">
+                           <td width=24 align="center">${player.playerId}</td>
+                           <td width=180><b>${player.firstName}&nbsp;${player.lastName}</b></td>
+                           <color:TeamColor teamName="${player.team}"/>
+                           <td width=45 align="center">${player.statHeightFeet}"${player.statHeightInches}'</td>                     
+                           <td width=26 align="center">${player.statExperience}</td>
+                           <td width=30 align="center">${player.statDiscSkills}</td>
+                           <td width=25 align="center">${player.statDefense}</td>
+                           <td width=27 align="center">${player.statAthleticism}</td>
+                           <td width=34 align="center">${player.statTotal}</td>
+                           <td width=51 align="center">${player.statCustom}</td>
+                           <td width=300>${player.descPreviousTeams}</td>
+                           <td width=170>${player.descAddPlayerNotes}</td>
+                           <td width=135>${player.infoBaggage}</td>
+                           <td width=100>${player.gender}</td>                          
+                       </tr>
+                   </c:if> 
+                </c:if>             
             </c:forEach> 
     	</table> 
     </div>

@@ -51,6 +51,7 @@ public class SetUser extends HttpServlet {
                 session.setAttribute("customRank4", "1");
                 session.setAttribute("customRank5", "0");
                 
+                request.setAttribute("gender", "All");
             String targetURL = "/GetPlayerData";            
         
             RequestDispatcher dispatcher =

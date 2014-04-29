@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
      <table id="sort" cellpadding="1">            
-        <form name="selectionBar" action="SortPlayers" method="post">
+        <form name="selectionBar" action="SortPlayers?gender=${gender}" method="post">
             <tr style="font-weight: bold;">
                 <td class="menuname" rowspan=2>Sort Order:</td>                
 		<td rowspan=2 width=10></td>
@@ -55,8 +55,10 @@
 	    <tr>
 		<td colspan=5>
                     <input type ="checkbox" name="cat6" ${(track6 == "on") ? "checked": ""}>Hide Drafted Players
-
-            </tr>            
+                    
+                </td>
+            </tr>    
+            <input type="hidden" name="gender" value="${gender}">
         </form>
     </table>
 </html>

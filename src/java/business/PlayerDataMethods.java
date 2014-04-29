@@ -95,7 +95,8 @@ public class PlayerDataMethods {
                 playerSet[itr].setInfoBaggage(playersRS.getString(11));
                 playerSet[itr].setStatHeightFeet(playersRS.getInt(12));
                 playerSet[itr].setStatHeightInches(playersRS.getInt(13));
-                
+                playerSet[itr].setGender(playersRS.getString(14));
+                //playerSet[itr].setBaggageId have not implemented this yet
                 //field calculations *dont need because I can just display height using feet and inches
 //                Double height;
 //                if(playerSet[itr].getStatHeightInches() >= 10) {

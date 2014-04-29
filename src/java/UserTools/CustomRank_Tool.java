@@ -42,11 +42,26 @@ public class CustomRank_Tool extends HttpServlet {
         String user = (String)session.getAttribute("user");
         
         /*************************************************************/
-        String customExp = (String)request.getParameter("Experience");
-        String customDSk = (String)request.getParameter("DiscSkills");
-        String customDef = (String)request.getParameter("Defense");
-        String customAth = (String)request.getParameter("Athleticism");
-        String customHt = (String)request.getParameter("Height");
+        String customExp;
+        String customDSk;
+        String customDef;
+        String customAth;
+        String customHt;
+        
+        if (request.getParameter("refresh") != null) {
+            customExp = (String)session.getAttribute("customRank1");
+            customDSk = (String)session.getAttribute("customRank2");
+            customDef = (String)session.getAttribute("customRank3");
+            customAth = (String)session.getAttribute("customRank4");
+            customHt = (String)session.getAttribute("customRank5");
+        } 
+        else {
+            customExp = (String)request.getParameter("Experience");
+            customDSk = (String)request.getParameter("DiscSkills");
+            customDef = (String)request.getParameter("Defense");
+            customAth = (String)request.getParameter("Athleticism");
+            customHt = (String)request.getParameter("Height");
+        }
         
         Double wE = Double.parseDouble(customExp);
         Double wDS = Double.parseDouble(customDSk);
@@ -63,25 +78,11 @@ public class CustomRank_Tool extends HttpServlet {
         }
         
         /***********************************************/
-        //Saves Sort Settings
-       
-//        String cat1 = (String)session.getAttribute("track1");
-//        String cat2 = (String)session.getAttribute("track2");
-//        String cat3 = (String)session.getAttribute("track3");
-//        String cat4 = (String)session.getAttribute("track4");
-//        String cat5 = (String)session.getAttribute("track5");
-//        String cat6 = (String)session.getAttribute("track6");
        
         String option = "yes";
         //tracks sorts Settings
         request.setAttribute("passedCustom", option);
-//        request.setAttribute("cat1", cat1);
-//        request.setAttribute("cat2", cat2);
-//        request.setAttribute("cat3", cat3);
-//        request.setAttribute("cat4", cat4);
-//        request.setAttribute("cat5", cat5);
-//        request.setAttribute("cat6", cat6);
-//        
+
         //tracks custom Rank Settings
         session.setAttribute("customRank1", customExp);
         session.setAttribute("customRank2", customDSk);

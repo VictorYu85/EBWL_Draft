@@ -22,7 +22,7 @@ and open the template in the editor.
     </servlet>
     <servlet>
         <servlet-name>RefreshTable</servlet-name>
-        <servlet-class>business.RefreshTable</servlet-class>
+        <servlet-class>UserTools.RefreshTable_Tool</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClearTeams</servlet-name>

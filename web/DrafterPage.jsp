@@ -7,7 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="color" uri="/WEB-INF/tlds/ebwlTags.tld" %>
 
 <%@ page import="business.*" %>
@@ -16,12 +15,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>EBWL 2014-2015 Player Draft</title>
-	<link rel="stylesheet" type="text/css" href="ebwl.css">
+	<link rel="stylesheet" type="text/css" href="ebwl-test.css">
     </head>
     <body>
         <div id="title"><h1>EBWL 2014-2015 Player Draft</h1></div>
         <div id="nav">
-	    <a href="GetPlayerData?gender=${gender}">&nbsp;Refresh </a> &nbsp;
+	    <a href="GetPlayerData?gender=${gender}&refresh=yes">&nbsp;Refresh </a> &nbsp;
             <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
 	
         <%@ include file="/DisplayElements/Gender_Toggle_UI_Component.jspf" %>

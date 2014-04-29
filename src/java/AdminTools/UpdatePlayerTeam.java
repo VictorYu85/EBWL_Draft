@@ -114,12 +114,10 @@ public class UpdatePlayerTeam extends HttpServlet {
         /*****************************************************************/
         
         session.setAttribute("playerSet", playerList);
+        request.setAttribute("gender", "All");
         
-        String user = (String)session.getAttribute("user");        
-        String targetURL = "/DrafterPage.jsp";
-        if (user.equals("admin")) {
-            targetURL = "/AdminPage.jsp";
-        }
+        String targetURL = "/AdminPage.jsp";
+        
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);
             dispatcher.forward(request, response); 

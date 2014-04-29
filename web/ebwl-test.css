@@ -1,0 +1,118 @@
+/* 
+    Document   : ebwl
+    Created on : Apr 23, 2014, 4:49:05 PM
+    Author     : Vyu
+    Description:
+        Changes proposed by my dad
+*/
+
+body {
+	background-color: #fdfdfd;
+	font-family: Calibri, Verdana, Arial, Helvetica, sans-serif;
+}
+
+tr.header {
+	background-color: #003f7f;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+div#title {
+	position: fixed;
+	top: -20px;
+	z-index: 1;
+}
+
+div#nav {
+	position: fixed;
+	top: 12px;
+	left:  500px;
+	z-index: 1;
+}
+
+div#nav a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #003f7f;
+	border: 2px solid #003f7f;
+	border-radius: 5px;
+	background-color: #eeeeee;
+}
+
+table#custom {
+	border: 3px solid;
+	border-radius: 10px;
+	border-color: #003f7f;
+	box-shadow: 5px 5px 5px #888888;
+	
+	position: fixed;
+	top: 46px;
+	z-index: 2;
+}
+
+table#draft {
+	border: 3px solid;
+	border-radius: 10px;
+	border-color: #003f7f;
+	box-shadow: 5px 5px 5px #888888;
+	
+	position: fixed;
+	top: 46px;
+	z-index: 2;
+}
+
+table#sort {
+	border: 3px solid;
+	border-radius: 10px;
+	border-color: #003f7f;
+	box-shadow: 5px 5px 5px #888888;
+	
+	position: fixed;
+	top: 112px;
+	z-index: 3;
+}
+
+div#playerheader {
+	position: absolute;
+	top: 200px;
+}
+
+div#scroll {
+	position: absolute;
+	top: 228px;
+	bottom: 0px;
+	overflow-y: scroll;
+}
+
+table.players {
+	border: 1px solid #003f7f;
+	/*border-collapse: collapse;*/
+}
+
+/* added */
+table.players tr {
+        padding: 0px;
+}
+table.players td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        /*
+	border: 1px solid #003f7f;
+        */
+    }
+    
+/* added */
+table.players tbody tr:nth-child(2n) {
+   background-color: #f8f8f8;
+}
+
+td.menuname {
+	font-weight: bold;
+	font-size: x-large;
+}
+
+table.players {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+       border-spacing: 0px;         
+}

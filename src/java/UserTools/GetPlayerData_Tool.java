@@ -55,12 +55,23 @@ public class GetPlayerData_Tool extends HttpServlet {
         session.setAttribute("playerSet", playerSet);
         
         //Determines whether data will be displayed to a drafter or to an admin
-        String user = (String)session.getAttribute("user");
-                
-        String targetURL = "/DrafterPage.jsp";
-        if (user.equals("admin")) {
-            targetURL = "/AdminPage.jsp";
+        String user = (String)session.getAttribute("user");                
+        String targetURL;
+        
+        if (user.equals("drafter")) {
+            //if the refresh attribute exists
+            if (request.getParameter("refresh") != null) {
+                targetURL = "/CustomRank?refresh=yes";
+            }
+            //if it's a fresh call to the drafting page
+            else {
+                targetURL = "/DrafterPage.jsp";
+            }            
         }
+        //(user.equals("admin"))
+        else {
+            targetURL = "/AdminPage.jsp";
+        }        
         
         String gender = (String)request.getAttribute("gender");
         if (gender == null) {

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package UserTools;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Vyu
  */
-public class RefreshTable extends HttpServlet {
+public class RefreshTable_Tool extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -36,6 +36,14 @@ public class RefreshTable extends HttpServlet {
             //NOT CURRENTLY IN USE
         /********************************************************/
             HttpSession session = request.getSession();
+            
+            request.setAttribute("refresh", "yes");
+            
+            String gender = (String)request.getAttribute("gender");
+            if (gender == null) {
+                gender = (String)request.getParameter("gender");
+            }
+            request.setAttribute("gender", gender);
             
             String targetURL = "/GetPlayerData";            
         

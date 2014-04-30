@@ -47,7 +47,7 @@ public class GetPlayerData_Tool extends HttpServlet {
         /*****************************************************************/
         //calls methods from PlayerDataMethods to determine size of playerSet
         //then gets player data from database
-        int numPlayers = PlayerDataMethods.getNumPlayers(dbURL, username, password);       
+        int numPlayers = PlayerDataMethods.getNumPlayers(dbURL, username, password);
         Player[] playerSet = PlayerDataMethods.getPlayerData(dbURL, username, password, numPlayers);
        
         HttpSession session = request.getSession();
@@ -56,28 +56,24 @@ public class GetPlayerData_Tool extends HttpServlet {
         
         //Determines whether data will be displayed to a drafter or to an admin
         String user = (String)session.getAttribute("user");                
-        String targetURL;
+        String targetURL;                
         
-        if (user.equals("drafter")) {
-            //if the refresh attribute exists
-            if (request.getParameter("refresh") != null) {
-                targetURL = "/CustomRank?refresh=yes";
-            }
-            //if it's a fresh call to the drafting page
-            else {
-                targetURL = "/DrafterPage.jsp";
-            }            
-        }
-        //(user.equals("admin"))
-        else {
+        targetURL = "/DrafterPage.jsp";        
+        if (user.equals("admin")) {
             targetURL = "/AdminPage.jsp";
-        }        
+        }   
+                       
+        String refresh = (String)request.getParameter("refresh");
+        if (refresh != null) {
+            targetURL = "/CustomRank";
+        }
         
         String gender = (String)request.getAttribute("gender");
         if (gender == null) {
             gender = (String)request.getParameter("gender");
         }
         request.setAttribute("gender", gender);
+        request.setAttribute("testPlayers", numPlayers);
         
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);

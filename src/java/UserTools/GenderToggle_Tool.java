@@ -4,6 +4,7 @@
  */
 package UserTools;
 
+import business.SelectionLists;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Vyu
  */
-public class RefreshTable_Tool extends HttpServlet {
+public class GenderToggle_Tool extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -31,25 +32,17 @@ public class RefreshTable_Tool extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-        /********************************************************/
-            //NOT CURRENTLY IN USE
-        /********************************************************/
             HttpSession session = request.getSession();
-            
-            request.setAttribute("refresh", "yes");
-            
-            String gender = (String)request.getAttribute("gender");
-            if (gender == null) {
-                gender = (String)request.getParameter("gender");
-            }
+
+            //Set gender based upon link clicked
+            String gender = request.getParameter("gender");    
             request.setAttribute("gender", gender);
-            
+            request.setAttribute("passedGender", "yes");            
             String targetURL = "/GetPlayerData";            
         
             RequestDispatcher dispatcher =
             getServletContext().getRequestDispatcher(targetURL);
-                dispatcher.forward(request, response);      
+                dispatcher.forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

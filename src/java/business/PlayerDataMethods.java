@@ -17,16 +17,16 @@ import business.Player;
 public class PlayerDataMethods {
     public static int getNumPlayers(String dbURL, String username, String password) {
 
-        Connection connection2; 
+        Connection connection; 
         ResultSet playersRS1;
-        int numItems = 151;
+        int numItems = 242;
         
         try {
-            connection2 = DriverManager.getConnection(dbURL, username, password);
-            Statement statement = connection2.createStatement();
+            connection = DriverManager.getConnection(dbURL, username, password);
+            Statement statement = connection.createStatement();
             playersRS1 = statement.executeQuery("SELECT COUNT(*) FROM player_details");
             playersRS1.next();
-            
+
             numItems = playersRS1.getInt(1);                    
         }
         catch(SQLException e)

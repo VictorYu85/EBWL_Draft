@@ -21,8 +21,8 @@ and open the template in the editor.
         <servlet-class>business.SetUser</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RefreshTable</servlet-name>
-        <servlet-class>UserTools.RefreshTable_Tool</servlet-class>
+        <servlet-name>GenderToggle</servlet-name>
+        <servlet-class>UserTools.GenderToggle_Tool</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClearTeams</servlet-name>
@@ -73,8 +73,8 @@ and open the template in the editor.
         <url-pattern>/SetUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RefreshTable</servlet-name>
-        <url-pattern>/RefreshTable</url-pattern>
+        <servlet-name>GenderToggle</servlet-name>
+        <url-pattern>/GenderToggle_Tool</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

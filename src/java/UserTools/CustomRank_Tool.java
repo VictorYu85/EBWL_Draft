@@ -48,7 +48,13 @@ public class CustomRank_Tool extends HttpServlet {
         String customAth;
         String customHt;
         
-        if (request.getParameter("refresh") != null) {
+        //Tests whether this process was started by form submission
+        String formSubmitTest = (String)request.getParameter("Experience");
+        if (formSubmitTest == null) {
+            formSubmitTest = "notSubmitted";
+        }
+        
+        if (formSubmitTest.equals("notSubmitted")) {
             customExp = (String)session.getAttribute("customRank1");
             customDSk = (String)session.getAttribute("customRank2");
             customDef = (String)session.getAttribute("customRank3");
@@ -79,9 +85,8 @@ public class CustomRank_Tool extends HttpServlet {
         
         /***********************************************/
        
-        String option = "yes";
         //tracks sorts Settings
-        request.setAttribute("passedCustom", option);
+        request.setAttribute("passedCustom", "yes");
 
         //tracks custom Rank Settings
         session.setAttribute("customRank1", customExp);

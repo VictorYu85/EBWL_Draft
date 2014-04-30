@@ -14,6 +14,7 @@
             <td>
                 <input type="submit" name="Submit Sort" value="Go">                   
             </td> 
+            <input type="hidden" name="gender" value="${gender}">
         </form>            
     </tr>
 </table>

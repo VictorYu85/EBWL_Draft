@@ -14,11 +14,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>EBWL 2014-2015 Player Draft</title>
+        <title>EBWL 2014-2015 Player Draft bbbbb ${sqlError}
+        <br></title>
 	<link rel="stylesheet" type="text/css" href="ebwl.css">
     </head>
     <body>
         <div id="title"><h1>EBWL 2014-2015 Player Draft</h1></div>
+        
         <div id="nav">
 	    <a href="GetPlayerData?gender=${gender}&refresh=yes">&nbsp;Refresh </a> &nbsp;
             <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;

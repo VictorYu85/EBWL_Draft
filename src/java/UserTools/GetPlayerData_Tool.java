@@ -17,6 +17,9 @@ import java.sql.*;
 
 import business.*;
 import business.SelectionLists;
+import java.io.*;
+
+
 /**
  *
  * 
@@ -45,8 +48,13 @@ public class GetPlayerData_Tool extends HttpServlet {
         String password = SelectionLists.password;
         
         /*****************************************************************/
+        
+        
+        /*****************************************************************/
         //calls methods from PlayerDataMethods to determine size of playerSet
         //then gets player data from database
+        
+       
         int numPlayers = PlayerDataMethods.getNumPlayers(dbURL, username, password);
         Player[] playerSet = PlayerDataMethods.getPlayerData(dbURL, username, password, numPlayers);
        
@@ -74,6 +82,10 @@ public class GetPlayerData_Tool extends HttpServlet {
         }
         request.setAttribute("gender", gender);
         request.setAttribute("testPlayers", numPlayers);
+        
+        //*****************test *****************/
+        request.setAttribute("sqlError", "BBBBBBBBBBBBB");
+        //*****************test ************  sqlErrorTest.testSql  *****/
         
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);

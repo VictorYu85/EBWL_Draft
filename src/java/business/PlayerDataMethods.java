@@ -13,6 +13,7 @@ package business;
 
 import java.sql.*;
 import business.Player;
+import java.io.*;
 
 public class PlayerDataMethods {
     public static int getNumPlayers(String dbURL, String username, String password) {
@@ -20,6 +21,8 @@ public class PlayerDataMethods {
         Connection connection; 
         ResultSet playersRS1;
         int numItems = 242;
+        
+        StringWriter errors = new StringWriter();
         
         try {
             connection = DriverManager.getConnection(dbURL, username, password);
@@ -32,8 +35,11 @@ public class PlayerDataMethods {
         catch(SQLException e)
         {
             e.printStackTrace();
-            for(Throwable t : e)
+            for(Throwable t : e){
                 t.printStackTrace();
+                e.printStackTrace(new PrintWriter(errors));
+                SelectionLists.sqlError = errors.toString();
+            }
         }              
         
         return numItems;

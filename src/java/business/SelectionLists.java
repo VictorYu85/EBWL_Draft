@@ -40,4 +40,6 @@ public class SelectionLists {
     public static String user = HomeUser;
     public static String password = HomePassword;
     
+    public static String sqlError = "AAAAAAAAAAAAAAAAAAAAAAAA";
+    
 }

@@ -22,12 +22,12 @@
 		<td colspan=2><h1 align=center>EBWL 2014-2015 Draft Portal</h1></td>
 	    </tr>
             <tr>
-                <td><a href="SetUser?user=admin"><img src="../images/manager.jpg" width="300" height="200"></a></td>
+                <td><a href="../SetUser?user=admin"><img src="../images/manager.jpg" width="300" height="200"></a></td>
                 <td><img src="../images/captain.jpg" usemap="#captain" width="300" height="200"></td>
                 
             </tr>
             <tr>
-                <td><a href="ToolTestingPage.jsp"><img src="../images/Hammer.jpg" width="200" height="200"></a></td>
+                <td><a href="../ToolTestingPage.jsp"><img src="../images/Hammer.jpg" width="200" height="200"></a></td>
             </tr>
         </table>      
     </body>

@@ -33,7 +33,7 @@
                 <c:if test = "${(player.team == '') || (track6 != 'on')}">   
                    <tr valign ="top">
                        <td width=26 align="center">${player.playerId}</td>
-                       <td width=180><b>${player.firstName}&nbsp;${player.lastName}</b></td>
+                       <td width=190><b>${player.firstName}&nbsp;${player.lastName}</b></td>
                        <color:TeamColor teamName="${player.team}"/>
                        
                        <c:if test ="${(player.gender == 'Male')}">

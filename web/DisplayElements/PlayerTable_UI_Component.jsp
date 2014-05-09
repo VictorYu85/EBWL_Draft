@@ -7,9 +7,10 @@
 <div id="playerheader">
     <table class="players" cellpadding="1">
         <tr class="header">
-            <td width=24 title="Arbitrary ID for drafting">ID</td>
-            <td width=180>Name</td>
+            <td width=26 title="Arbitrary ID for drafting">ID</td>
+            <td width=190>Name</td>
             <td width=99>Team</td>
+            <td width=50>M/F</td>
             <td width=45>Height</td>
             <td width=26 title="Experience">EXP</td>
             <td width=30 title="Disc Skills">DISC</td>
@@ -20,7 +21,7 @@
             <td width=300>Previous Teams</td>
             <td width=170>Additional Player Notes</td>
             <td width=135>Baggage</td>
-            <td width=100>Gender</td>
+            
         </tr>
     </table>
 </div>
@@ -31,9 +32,18 @@
             <c:if test = "${(gender == player.gender) || (gender == 'All') || (user == 'admin')}">
                 <c:if test = "${(player.team == '') || (track6 != 'on')}">   
                    <tr valign ="top">
-                       <td width=24 align="center">${player.playerId}</td>
+                       <td width=26 align="center">${player.playerId}</td>
                        <td width=180><b>${player.firstName}&nbsp;${player.lastName}</b></td>
                        <color:TeamColor teamName="${player.team}"/>
+                       
+                       <c:if test ="${(player.gender == 'Male')}">
+                           <td width=50>M</td>
+                            <!--td width=50>${player.gender}</td-->
+                       </c:if>
+                       <c:if test ="${(player.gender == 'Female')}">
+                           <td width=50>F</td>                            
+                       </c:if>
+                       
                        <td width=45 align="center">${player.statHeightFeet}"${player.statHeightInches}'</td>                     
                        <td width=26 align="center">${player.statExperience}</td>
                        <td width=30 align="center">${player.statDiscSkills}</td>
@@ -44,7 +54,7 @@
                        <td width=300>${player.descPreviousTeams}</td>
                        <td width=170>${player.descAddPlayerNotes}</td>
                        <td width=135>${player.infoBaggage}</td>
-                       <td width=100>${player.gender}</td>                          
+                                                 
                    </tr>
                </c:if> 
             </c:if>             

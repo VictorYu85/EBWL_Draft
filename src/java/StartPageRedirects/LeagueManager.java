@@ -2,22 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package StartPageRedirects;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Vyu
  */
-public class SetUser extends HttpServlet {
+public class LeagueManager extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -31,39 +29,7 @@ public class SetUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            HttpSession session = request.getSession();
-            String user = (String)request.getParameter("user");
-            String gender = (String)request.getParameter("gender");
-            
-            // For when gender no gender is selected, the default is All
-            if (gender == null) {
-                gender = "All";
-            } 
-                       
-            session.setAttribute("user", user);
-            session.setAttribute("selectCat", SelectionLists.categoriesList);
-            session.setAttribute("teamList", SelectionLists.teamList);
-            
-                session.setAttribute("track1", "None");
-                session.setAttribute("track2", "None");
-                session.setAttribute("track3", "None");
-                session.setAttribute("track4", "None");
-                session.setAttribute("track5", "None");
-                session.setAttribute("track6", "off");
-                
-                session.setAttribute("customRank1", "1");
-                session.setAttribute("customRank2", "1");
-                session.setAttribute("customRank3", "1");
-                session.setAttribute("customRank4", "1");
-                session.setAttribute("customRank5", "0");
-                
-                request.setAttribute("gender", gender);
-            String targetURL = "/GetPlayerData";            
-        
-            RequestDispatcher dispatcher =
-            getServletContext().getRequestDispatcher(targetURL);
-                dispatcher.forward(request, response); 
+        response.sendRedirect("SetUser?user=admin");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

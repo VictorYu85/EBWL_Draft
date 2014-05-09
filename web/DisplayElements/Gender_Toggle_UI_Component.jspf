@@ -3,4 +3,6 @@
 
 <a href="GetPlayerData?gender=Male&refresh=yes">Male</a>
 <a href="GetPlayerData?gender=Female&refresh=yes">Female</a>
+<!--
 <a href="GetPlayerData?gender=All&refresh=yes">All</a>
+-->

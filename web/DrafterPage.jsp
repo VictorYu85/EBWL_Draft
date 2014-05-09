@@ -25,7 +25,7 @@
         
         <div id="nav">
 	    <a href="GetPlayerData?gender=${gender}&refresh=yes">&nbsp;Refresh </a> &nbsp;
-            <a href="index.jsp">&nbsp;Back to Index </a> &nbsp;
+            <a href="index.jsp">&nbsp;Back</a> &nbsp;
 	
         <%@ include file="/DisplayElements/Gender_Toggle_UI_Component.jspf" %>
         </div>

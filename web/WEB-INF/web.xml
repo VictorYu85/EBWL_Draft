@@ -28,6 +28,14 @@ and open the template in the editor.
         <servlet-name>NameCleanUp</servlet-name>
         <servlet-class>AdminTools.NameCleanUp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LeagueManager</servlet-name>
+        <servlet-class>StartPageRedirects.LeagueManager</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PortalPage</servlet-name>
+        <servlet-class>StartPageRedirects.PortalPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClearTeams</servlet-name>
         <url-pattern>/ClearTeams</url-pattern>
@@ -83,6 +91,14 @@ and open the template in the editor.
     <servlet-mapping>
         <servlet-name>NameCleanUp</servlet-name>
         <url-pattern>/NameCleanUp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LeagueManager</servlet-name>
+        <url-pattern>/LeagueManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PortalPage</servlet-name>
+        <url-pattern>/PortalPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

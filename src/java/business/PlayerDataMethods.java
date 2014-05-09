@@ -22,25 +22,35 @@ public class PlayerDataMethods {
         ResultSet playersRS1;
         int numItems = 242;
         
+        /**********Error Display Code**************/
         StringWriter errors = new StringWriter();
+        /**********Error Display Code**************/
         
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(dbURL, username, password);
             Statement statement = connection.createStatement();
             playersRS1 = statement.executeQuery("SELECT COUNT(*) FROM player_details");
             playersRS1.next();
 
-            numItems = playersRS1.getInt(1);                    
+            numItems = playersRS1.getInt(1);  
+            
+            statement.close();
+            connection.close();
         }
         catch(SQLException e)
         {
             e.printStackTrace();
             for(Throwable t : e){
                 t.printStackTrace();
+                /**********Error Display Code**************/
                 e.printStackTrace(new PrintWriter(errors));
-                SelectionLists.sqlError = errors.toString();
+                sqlErrorTest.testSql = errors.toString();
+                /**********Error Display Code**************/
             }
-        }              
+        }  catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }            
         
         return numItems;
     }

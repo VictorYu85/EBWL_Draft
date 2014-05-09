@@ -24,6 +24,10 @@ and open the template in the editor.
         <servlet-name>GenderToggle</servlet-name>
         <servlet-class>UserTools.GenderToggle_Tool</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NameCleanUp</servlet-name>
+        <servlet-class>AdminTools.NameCleanUp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClearTeams</servlet-name>
         <url-pattern>/ClearTeams</url-pattern>
@@ -75,6 +79,10 @@ and open the template in the editor.
     <servlet-mapping>
         <servlet-name>GenderToggle</servlet-name>
         <url-pattern>/GenderToggle_Tool</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NameCleanUp</servlet-name>
+        <url-pattern>/NameCleanUp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

@@ -14,7 +14,7 @@ package business;
 import java.io.Serializable;
 
 public class sqlErrorTest implements Serializable {
-    public static String testSql = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    public static String testSql = "";
     
     public sqlErrorTest() {
 

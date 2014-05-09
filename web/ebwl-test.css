@@ -72,6 +72,17 @@ table#sort {
 	z-index: 3;
 }
 
+table#debugCode {
+	border: 3px solid;
+	border-radius: 10px;
+	border-color: #003f7f;
+	box-shadow: 5px 5px 5px #888888;
+	
+	position: fixed;
+	top: 112px;
+	z-index: 4;
+}
+
 div#playerheader {
 	position: absolute;
 	top: 200px;
@@ -86,6 +97,7 @@ div#scroll {
 
 table.players {
 	border: 1px solid #003f7f;
+        width: 1246px;
 	/*border-collapse: collapse;*/
 }
 
@@ -103,7 +115,8 @@ table.players td {
     
 /* added */
 table.players tbody tr:nth-child(2n) {
-   background-color: #f8f8f8;
+   background-color: #CACACA;
+   /*f8f8f8; */
 }
 
 td.menuname {

@@ -19,7 +19,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>League Manager Page</title>
-	<link rel="stylesheet" type="text/css" href="ebwl.css">
+	<link rel="stylesheet" type="text/css" href="ebwl-test.css">
     </head>
     <body>
         <div id="title"><h1>EBWL 2014-2015 League Manager</h1></div>

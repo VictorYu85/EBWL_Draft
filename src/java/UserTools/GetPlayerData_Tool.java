@@ -84,8 +84,8 @@ public class GetPlayerData_Tool extends HttpServlet {
         request.setAttribute("testPlayers", numPlayers);
         
         //*****************test *****************/
-        request.setAttribute("sqlError", "BBBBBBBBBBBBB");
-        //*****************test ************  sqlErrorTest.testSql  *****/
+        request.setAttribute("sqlError",  sqlErrorTest.testSql);
+        //*****************test *****************/
         
         RequestDispatcher dispatcher =
         getServletContext().getRequestDispatcher(targetURL);

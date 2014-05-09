@@ -14,12 +14,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>EBWL 2014-2015 Player Draft bbbbb ${sqlError}
+        <title>EBWL 2014-2015 Player Draft 
         <br></title>
-	<link rel="stylesheet" type="text/css" href="ebwl.css">
+	<link rel="stylesheet" type="text/css" href="ebwl-test.css">
     </head>
     <body>
-        <div id="title"><h1>EBWL 2014-2015 Player Draft</h1></div>
+        <div id="title"><h1>EBWL 2014-2015 Player Draft</h1> <br>
+            
+        </div>
         
         <div id="nav">
 	    <a href="GetPlayerData?gender=${gender}&refresh=yes">&nbsp;Refresh </a> &nbsp;
@@ -31,5 +33,6 @@
         <%@ include file="/DisplayElements/CustomRank_UI_Component.jsp" %>
         <%@ include file="/DisplayElements/Sort_UI_Component.jsp" %>
         <%@ include file="/DisplayElements/PlayerTable_UI_Component.jsp" %>
+        
     </body>
 </html>

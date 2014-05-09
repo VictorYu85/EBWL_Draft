@@ -20,6 +20,7 @@
             <tr>
                 <td><a href="SetUser?user=admin"><img src="images/manager.jpg" width="300" height="200"></a></td>
                 <td><a href="SetUser?user=drafter"><img src="images/captain.jpg" width="300" height="200"></a></td>
+                <td><a href="ToolTestingPage.jsp"><img src="images/captain.jpg" width="300" height="200"></a></td>
             </tr>
         </table>      
     </body>

@@ -1,0 +1,106 @@
+#!/bin/bash
+# processPlayers -- script to take CSV of player data from bayareadisc.org and produce upload.csv to upload to mySQL database
+# written by Justin Hsia (5/14/2014)
+
+# command line input check
+if [ "$1" = "" ]; then
+	echo "Usage: $0 <input CSV>"
+	exit
+fi
+
+ 
+# replaces possible user-inputed carriage returns with commas
+sed ':a;N;$!ba;s/\r\n/, /g' $1 > out.csv
+
+
+# count the number of players processed
+count=0
+id=1
+
+OLD_IFS="$IFS"
+
+# read out.csv line-by-line
+while read line
+do
+
+	# ignore the header line
+	if [ "$count" = 0 ]; then
+		# place header line in output (overwrite file)
+		echo "\"Player_Id\",\"First_Name\",\"Last_Name\",\"Team\",\"Stat_Experience\",\"Stat_Disc_Skills\",\"Stat_Defense\",\"Stat_Athleticism\",\"Desc_Previous_Teams\",\"Desc_Add_Player_Notes\",\"Info_Baggage\",\"Stat_Height_Feet\",\"Stat_Height_Inches\"" > upload.csv
+		echo ""
+	else
+		IFS=","
+		A=( $line )   # A for array!
+		
+		for (( i=0; i<${#A[@]}; i++ ))
+		do
+			# recombine fields that had commas in them (unintentional splits)
+			j=0
+			first=${A[$i]:0:1}
+			last=${A[$i]:${#A[$i]}-1:1}
+
+			# unintentional split indicated by unclosed double-quotes
+			while [[ $first == "\"" && $first != $last ]]; do
+				j=$(($j+1))
+				A[$i]="${A[$i]},${A[$i+$j]}"
+				unset A[$i+$j]
+				last=${A[$i]:${#A[$i]}-1:1}
+			done
+			i=$(($i+$j))
+		done
+		
+		# loop for clearing unset entries; should result in 43 fields
+		fcount=0
+		for f in "${A[@]}"
+		do
+			A[$fcount]=$f
+			#echo "field $fcount: $f"
+			fcount=$(($fcount+1))
+		done
+
+		# *-----------------*
+		# | Relevant Fields | 
+		# *-----------------*
+		# (0)	First Name
+		# (1)	Last Name
+		# (3)	Sex
+		# (4)	DOB/Age
+		# (15)	Registration Status (ignore waitlist)
+		# (25)	Attendance
+		# (26)	Previous Teams
+		# (27)	Baggage Request
+		# (32)	Height (ft)
+		# (33)	Height (in)
+		# (34)	EXP
+		# (35)	DISC
+		# (36)	DEF
+		# (37)	ATH
+		# (41)	Additional Notes
+
+		# remove unnecessary text from Stat fields
+		IFS=" "
+		temp=( ${A[34]} ); A[34]="$temp\""
+		temp=( ${A[35]} ); A[35]="$temp\""
+		temp=( ${A[36]} ); A[36]="$temp\""
+		temp=( ${A[37]} ); A[37]="$temp\""
+		#echo "${A[34]} ${A[35]} ${A[36]} ${A[37]}"
+		
+		# dump to CSV if registered
+		if [[ ${A[15]} == "\"Spot Reserved\"" ]]; then
+			echo "\"$id\",${A[0]},${A[1]},,${A[34]},${A[35]},${A[36]},${A[37]},${A[26]},${A[41]},${A[27]},${A[32]},${A[33]}" >> upload.csv
+			echo "${A[0]:1:${#A[0]}-2} ${A[1]:1:${#A[1]}-2} given ID $id"
+			id=$(($id+1))
+		else
+			echo "Row $(($count+1)) NOT registered"
+		fi
+	fi
+	
+	# increment the count
+	count=$(($count+1))
+done < out.csv
+
+IFS="$OLD_IFS"
+
+echo ""
+echo "DONE: $(($count-1)) players processed."
+

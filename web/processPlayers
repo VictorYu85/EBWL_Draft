@@ -1,6 +1,6 @@
 #!/bin/bash
 # processPlayers -- script to take CSV of player data from bayareadisc.org and produce upload.csv to upload to mySQL database
-# written by Justin Hsia (5/14/2014)
+# written by Justin Hsia (5/20/2014)
 
 # command line input check
 if [ "$1" = "" ]; then
@@ -13,10 +13,12 @@ fi
 sed ':a;N;$!ba;s/\r\n/, /g' $1 > out.csv
 
 
-# count the number of players processed
+# track the num of players processed and ID to assign
 count=0
 id=1
+names=( "" )
 
+# IFS stands for Internal Field Separator and determines how you split a string into an array
 OLD_IFS="$IFS"
 
 # read out.csv line-by-line
@@ -26,15 +28,17 @@ do
 	# ignore the header line
 	if [ "$count" = 0 ]; then
 		# place header line in output (overwrite file)
-		echo "\"Player_Id\",\"First_Name\",\"Last_Name\",\"Team\",\"Stat_Experience\",\"Stat_Disc_Skills\",\"Stat_Defense\",\"Stat_Athleticism\",\"Desc_Previous_Teams\",\"Desc_Add_Player_Notes\",\"Info_Baggage\",\"Stat_Height_Feet\",\"Stat_Height_Inches\"" > upload.csv
+		echo "\"Player_Id\",\"First_Name\",\"Last_Name\",\"Info_Baggage\",\"Team\",\"Stat_Experience\",\"Stat_Disc_Skills\",\"Stat_Defense\",\"Stat_Athleticism\",\"Desc_Previous_Teams\",\"Desc_Add_Player_Notes\",\"Stat_Height_Feet\",\"Stat_Height_Inches\",\"Gender\",\"Baggage_Id\"" > temp.csv
 		echo ""
 	else
+		# split line on commas
 		IFS=","
 		A=( $line )   # A for array!
 		
-		for (( i=0; i<${#A[@]}; i++ ))
+		# recombine fields that had commas in them (unintentional splits)
+		limit=${#A[@]}
+		for (( i=0; i<$limit; i++ ))
 		do
-			# recombine fields that had commas in them (unintentional splits)
 			j=0
 			first=${A[$i]:0:1}
 			last=${A[$i]:${#A[$i]}-1:1}
@@ -77,18 +81,36 @@ do
 		# (37)	ATH
 		# (41)	Additional Notes
 
+
+		# convert names to proper case
+		# note: this does mess up names like McDonald
+		A[0]=$(echo ${A[0]} | sed 's/.*/\L&/; s/[a-z]*/\u&/g')
+		A[1]=$(echo ${A[1]} | sed 's/.*/\L&/; s/[a-z]*/\u&/g')
+		A[27]=$(echo ${A[27]} | sed 's/.*/\L&/; s/[a-z]*/\u&/g')
+		A[27]=$(echo "${A[27]}" | sed -e 's/  */ /g' -e 's/^ *\(.*\) *$/\1/')
+
+		# shorten gender
+		A[3]="\"${A[3]:1:1}\""
+
 		# remove unnecessary text from Stat fields
 		IFS=" "
 		temp=( ${A[34]} ); A[34]="$temp\""
 		temp=( ${A[35]} ); A[35]="$temp\""
 		temp=( ${A[36]} ); A[36]="$temp\""
 		temp=( ${A[37]} ); A[37]="$temp\""
-		#echo "${A[34]} ${A[35]} ${A[36]} ${A[37]}"
-		
+
+
 		# dump to CSV if registered
 		if [[ ${A[15]} == "\"Spot Reserved\"" ]]; then
-			echo "\"$id\",${A[0]},${A[1]},,${A[34]},${A[35]},${A[36]},${A[37]},${A[26]},${A[41]},${A[27]},${A[32]},${A[33]}" >> upload.csv
-			echo "${A[0]:1:${#A[0]}-2} ${A[1]:1:${#A[1]}-2} given ID $id"
+			# add name (remove extra whitespace) to names array 
+			names[$id]="${A[0]:1:${#A[0]}-2} ${A[1]:1:${#A[1]}-2}"
+			names[$id]=$(echo "${names[$id]}" | sed -e 's/  */ /g' -e 's/^ *\(.*\) *$/\1/')
+			echo "${names[$id]} given ID $id"
+
+			# output all but Baggage_Id
+			echo "\"$id\",${A[0]},${A[1]},${A[27]},,${A[34]},${A[35]},${A[36]},${A[37]},${A[26]},${A[41]},${A[32]},${A[33]},${A[3]}," >> temp.csv
+
+
 			id=$(($id+1))
 		else
 			echo "Row $(($count+1)) NOT registered"
@@ -99,8 +121,75 @@ do
 	count=$(($count+1))
 done < out.csv
 
-IFS="$OLD_IFS"
-
 echo ""
 echo "DONE: $(($count-1)) players processed."
+
+
+# Process baggage in two sweeps (check for bi-directional requests)
+# 1st sweep: check for name match, store ID in baggage[]
+count=0
+baggage=( 0 )
+while read line
+do
+	if [ "$count" != 0 ]; then
+		# split on commas
+		# baggage is 4th so there shouldn't be any unwanted splits before then
+		IFS=","
+		A=( $line )
+
+		# track if match in names[] array
+		match=0
+		for (( i=1; i<${#names[@]}; i++ ))
+		do
+			if [[ ${A[3]:1:${#A[3]}-2} == ${names[$i]} ]]; then
+				# store ID if match
+				match=$i
+				break
+			fi
+		done
+
+		if [ "$match" == 0 ]; then
+			baggage[$count]=0
+		else
+			baggage[$count]=$match
+		fi
+	fi
+	# increment count
+	count=$(($count+1))
+done < temp.csv
+echo ""
+echo "DONE: 1st sweep for baggage."
+
+# 2nd sweep: check if baggage request requested you back
+for (( i=1; i<${#baggage[@]}; i++ ))
+do
+	if [ "${baggage[$i]}" != 0 ]; then
+		if [ "${baggage[${baggage[$i]}]}" != "$i" ]; then
+			baggage[$i]=0
+		fi
+	fi
+done
+echo "DONE: 2nd sweep for baggage."
+
+# output to upload.csv
+count=0
+while read line
+do
+	if [ "$count" == 0 ]; then
+		echo "$line" > upload.csv
+	else
+		if [ "${baggage[$count]}" == 0 ]; then
+			echo "$line\"\"" >> upload.csv
+		else
+			echo "$line\"${baggage[$count]}\"" >> upload.csv
+		fi
+	fi
+	count=$(($count+1))
+done < temp.csv
+echo "DONE: Baggage processed."
+
+
+# restore IFS and remove temporary files
+IFS="$OLD_IFS"
+rm out.csv temp.csv
 
